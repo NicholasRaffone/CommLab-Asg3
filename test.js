@@ -1,4 +1,4 @@
-const testaudio = 'https://raw.githubusercontent.com/NicholasRaffone/CommLab-Asg3/main/assets/testaudio.wav'
+const testaudio = 'https://raw.githubusercontent.com/NicholasRaffone/CommLab-Asg3/main/assets/laugh.wav'
 const player = new Tone.Player(testaudio).toMaster()
 const mainbutton = document.getElementById('testbutton');
 
@@ -39,6 +39,17 @@ const stopMainSound = (player) =>{
     player.stop();
 }
 
+let prevstate = 'started';
+
+const max_timeout = Math.max.apply(Math, effectbuttons.map((effectbutton)=>effectbutton.timeout));
+function checkAudio(){
+    if([prevstate, player.state].every((val)=>val==='stopped'))
+        console.log('end')
+    prevstate = player.state
+    setTimeout(checkAudio, max_timeout);
+}
+
+
 //Effect sound handler, takes in main player, effectplayer, etc.
 //set currTimestamp to next available press on valid press
 const effectSoundHandler = (player, effectplayer, timeout, overlapPlayers) =>{
@@ -61,7 +72,8 @@ const effectSoundHandler = (player, effectplayer, timeout, overlapPlayers) =>{
 
 //press main button to play main sound
 mainbutton.addEventListener('click',()=>{
-    playSound(player, currTime)
+    playSound(player, currTime);
+    checkAudio();
 })
 
 //iterate over effectbuttons and create click eventlisteners
