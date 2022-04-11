@@ -1,6 +1,20 @@
-const rootUrl = "https://raw.githubusercontent.com/NicholasRaffone/CommLab-Asg3/main"
+const getRandInt = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
-const testaudio = rootUrl + '/sounds/ba_dum_tss.wav'
+const whichPerformance = getRandInt(0, 2);
+
+const performances = ["pickleJuice.mp3", "timothee.mp3", "TSA.mp3"];
+const titles = ["Pickle Juice", "Timothee", "TSA"];
+title.textContent = titles[whichPerformance];
+
+const rootUrl = "https://raw.githubusercontent.com/NicholasRaffone/CommLab-Asg3/main";
+
+console.log(performances[whichPerformance]);
+
+const testaudio = rootUrl + '/sounds/performances/' + performances[whichPerformance];
 
 // const testaudio = 'https://raw.githubusercontent.com/NicholasRaffone/CommLab-Asg3/main/assets/laugh.wav'
 const player = new Tone.Player(testaudio).toMaster()

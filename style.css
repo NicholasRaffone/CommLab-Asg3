@@ -15,6 +15,22 @@ body {
     width: 100vw;
 }
 
+#title-container {
+    font-size: 30px;
+    position: absolute;
+    z-index: 5;
+    margin: 0 auto 0 auto;
+    width: 100vw;
+    text-align: center;
+}
+
+#title {
+    margin: 0;
+    padding-top: 20px;
+    transition: 1.5s;
+    opacity: 0;
+}
+
 #speaker-container, #audience-container {
     width: 100vw;
     height: 100%;
@@ -25,7 +41,6 @@ body {
 }
 
 #panel {
-    /* background-color: bisque; */
     background: url("./images/panel_crop.PNG");
     background-position: center;
     background-repeat: no-repeat;
