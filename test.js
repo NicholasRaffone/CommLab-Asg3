@@ -73,13 +73,26 @@ const stopMainSound = (player) =>{
     player.stop();
 }
 
+const endingScreen = document.getElementById("ending-screen");
+
+const showEndingScreen = () => {
+    endingScreen.classList.remove("hidden");
+}
+
+const ticketEnd = document.getElementById("ticket-end")
+ticketEnd.addEventListener("mousedown", () => {
+    location.reload()
+})
+
 let prevstate = 'started';
 
 const max_timeout = Math.max.apply(Math, effectbuttons.map((effectbutton)=>effectbutton.timeout));
 console.log(max_timeout)
 function checkAudio(){
-    if([prevstate, player.state].every((val)=>val==='stopped'))
+    if([prevstate, player.state].every((val)=>val==='stopped')) {
         console.log('end')
+        showEndingScreen()
+    }
     prevstate = player.state
     setTimeout(checkAudio, max_timeout);
 }
@@ -105,6 +118,21 @@ const effectSoundHandler = (player, effectplayer, timeout, overlapPlayers) =>{
     }
 }
 
+const audience = ["audience.PNG", "audience2.PNG"];
+let i = 0;
+
+const audienceImg = document.getElementById("audience");
+const changeAudience = () => {
+    i = (i+1) % audience.length;
+    audienceImg.src = "./images/" + audience[i];
+}
+
+const moveAudience = () => {
+    for (let j=0; j<5; j++) {
+        setTimeout(changeAudience, 300 * (j+1));
+    }
+}
+
 //press main button to play main sound
 mainbutton.addEventListener('mousedown',()=>{
     playSound(player, currTime);
@@ -122,6 +150,7 @@ for(const effectbutton of effectbuttons){
     }
     domButton.addEventListener(('click'),()=>{
         effectSoundHandler(player, effectPlayer, timeout, overlapPlayers);
+        moveAudience();
     })
 }
 
