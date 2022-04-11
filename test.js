@@ -1,6 +1,10 @@
-const testaudio = 'https://raw.githubusercontent.com/NicholasRaffone/CommLab-Asg3/main/assets/laugh.wav'
+const rootUrl = "https://raw.githubusercontent.com/NicholasRaffone/CommLab-Asg3/main"
+
+const testaudio = rootUrl + '/sounds/ba_dum_tss.wav'
+
+// const testaudio = 'https://raw.githubusercontent.com/NicholasRaffone/CommLab-Asg3/main/assets/laugh.wav'
 const player = new Tone.Player(testaudio).toMaster()
-const mainbutton = document.getElementById('testbutton');
+const mainbutton = document.getElementById('ticket');
 
 //timeout to make sure ppl don't spam click the living shit out of the button
 // set to 2500ms
@@ -17,12 +21,42 @@ let nextAvailablePress = 0;
  *  overlapsounds->string[]: filepaths for overlap sounds, random selected everytime (empty string for no sound effect)
  * }
  */
-const effectbuttons = [{
-    filepath: 'https://raw.githubusercontent.com/NicholasRaffone/CommLab-Asg3/main/assets/laugh.wav',
-    buttonid : 'laughbutton',
+ const effectbuttons = [{
+    filepath: rootUrl + '/sounds/ba_dum_tss.wav',
+    buttonid: 'button-2',
     timeout: 2500,
-    overlapsounds: ['','https://raw.githubusercontent.com/NicholasRaffone/CommLab-Asg3/main/assets/thankyou.wav']
-}]
+    overlapsounds: ['', rootUrl + '/assets/thankyou.wav']
+    },
+    {
+    filepath: rootUrl + '/sounds/booing.mp3',
+    buttonid: 'button-3',
+    timeout: 2500,
+    overlapsounds: ['', rootUrl + '/assets/thankyou.wav']
+    },
+    {
+    filepath: rootUrl + '/sounds/bruh.mp3',
+    buttonid: 'button-4',
+    timeout: 2500,
+    overlapsounds: ['', rootUrl + '/assets/thankyou.wav']
+    },
+    {
+    filepath: rootUrl + '/sounds/cheering.mp3',
+    buttonid: 'button-5',
+    timeout: 2500,
+    overlapsounds: ['', rootUrl + '/assets/thankyou.wav']
+    },
+    {
+    filepath: rootUrl + '/sounds/crowd_laugh.mp3',
+    buttonid: 'button-6',
+    timeout: 2500,
+    overlapsounds: ['', rootUrl + '/assets/thankyou.wav']
+    },
+    {
+    filepath: rootUrl + '/sounds/sad.mp3',
+    buttonid: 'button-7',
+    timeout: 2500,
+    overlapsounds: ['', rootUrl + '/assets/thankyou.wav']
+    }]
 
 //current time of main player
 let currTime = 0;
@@ -42,6 +76,7 @@ const stopMainSound = (player) =>{
 let prevstate = 'started';
 
 const max_timeout = Math.max.apply(Math, effectbuttons.map((effectbutton)=>effectbutton.timeout));
+console.log(max_timeout)
 function checkAudio(){
     if([prevstate, player.state].every((val)=>val==='stopped'))
         console.log('end')
@@ -71,7 +106,7 @@ const effectSoundHandler = (player, effectplayer, timeout, overlapPlayers) =>{
 }
 
 //press main button to play main sound
-mainbutton.addEventListener('click',()=>{
+mainbutton.addEventListener('mousedown',()=>{
     playSound(player, currTime);
     checkAudio();
 })
