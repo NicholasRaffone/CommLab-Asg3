@@ -1,4 +1,4 @@
-const testaudio = './assets/testaudio.wav'
+const testaudio = 'https://raw.githubusercontent.com/NicholasRaffone/CommLab-Asg3/main/assets/testaudio.wav'
 const player = new Tone.Player(testaudio).toMaster()
 const mainbutton = document.getElementById('testbutton');
 
@@ -18,10 +18,10 @@ let nextAvailablePress = 0;
  * }
  */
 const effectbuttons = [{
-    filepath: './assets/laugh.wav',
+    filepath: 'https://raw.githubusercontent.com/NicholasRaffone/CommLab-Asg3/main/assets/laugh.wav',
     buttonid : 'laughbutton',
     timeout: 2500,
-    overlapsounds: ['','./assets/thankyou.wav']
+    overlapsounds: ['','https://raw.githubusercontent.com/NicholasRaffone/CommLab-Asg3/main/assets/thankyou.wav']
 }]
 
 //current time of main player
