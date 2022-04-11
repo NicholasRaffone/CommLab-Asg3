@@ -22,6 +22,12 @@ let nextAvailablePress = 0;
  * }
  */
  const effectbuttons = [{
+    filepath: rootUrl + '/sounds/applause.wav',
+    buttonid: 'button-1',
+    timeout: 2500,
+    overlapsounds: ['', rootUrl + '/assets/thankyou.wav']
+    },
+    {
     filepath: rootUrl + '/sounds/ba_dum_tss.wav',
     buttonid: 'button-2',
     timeout: 2500,
@@ -46,7 +52,7 @@ let nextAvailablePress = 0;
     overlapsounds: ['', rootUrl + '/assets/thankyou.wav']
     },
     {
-    filepath: rootUrl + '/sounds/crowd_laugh.mp3',
+    filepath: rootUrl + '/sounds/crowd_laugh.wav',
     buttonid: 'button-6',
     timeout: 2500,
     overlapsounds: ['', rootUrl + '/assets/thankyou.wav']
