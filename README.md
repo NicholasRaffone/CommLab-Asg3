@@ -13,6 +13,8 @@ Graphics: Gifs and PNGs produced with sketchers pro.
 
 Reaction sounds: from freesounds.org and mixkit
 
+Web Development: We used vanilla JS to communicate between the HTML and audio. Using Toner.js, we were able to play and pause the audio clips dynamically. We were able to create abstractions of the buttons that allowed us to implement new audience and performer reactions seamlessly, and utilized event listeners to handle user input. 
+
 Reflection/Evaluation: 
 
-Our expectations were met. We were able to create a website similar to our wireframe and edit the sound recordings to communicate our messgae to the audience.
+Our expectations were met. We were able to create a website similar to our wireframe and edit the sound recordings to communicate our messgae to the audience. If we were to continue with this website, we would look to increase interactivity, with the speaker reacting to the audience input in a more dynamic way. One idea we couldn't implement was where with enough booing, the comedian would give up mid performance. 
